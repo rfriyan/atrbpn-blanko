@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BERITA_ACARA" EntityType="Model.BERITA_ACARA" />
+    <EntitySet Name="BLANKOes" EntityType="Model.BLANKO" />
+    <EntitySet Name="KANTORs" EntityType="Model.KANTOR" />
+    <EntitySet Name="PENGELOLAAN_BLANKO" EntityType="Model.PENGELOLAAN_BLANKO" />
+    <EntitySet Name="STATUS_PENGELOLAAN_BLANKO" EntityType="Model.STATUS_PENGELOLAAN_BLANKO" />
+    <EntitySet Name="TIPE_BLANKO" EntityType="Model.TIPE_BLANKO" />
+    <EntitySet Name="TIPE_PROSES_BLANKO" EntityType="Model.TIPE_PROSES_BLANKO" />
+    <EntitySet Name="USERPERORANGANs" EntityType="Model.USERPERORANGAN" />
+    <AssociationSet Name="FK_BERITA_ACARA" Association="Model.FK_BERITA_ACARA">
+      <End Role="BERITA_ACARA" EntitySet="BERITA_ACARA" />
+      <End Role="PENGELOLAAN_BLANKO" EntitySet="PENGELOLAAN_BLANKO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BLANKO" Association="Model.FK_BLANKO">
+      <End Role="BLANKO" EntitySet="BLANKOes" />
+      <End Role="PENGELOLAAN_BLANKO" EntitySet="PENGELOLAAN_BLANKO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KANTOR" Association="Model.FK_KANTOR">
+      <End Role="KANTOR" EntitySet="KANTORs" />
+      <End Role="USERPERORANGAN" EntitySet="USERPERORANGANs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STATUS_PENGELOLAAN_BLANKO" Association="Model.FK_STATUS_PENGELOLAAN_BLANKO">
+      <End Role="STATUS_PENGELOLAAN_BLANKO" EntitySet="STATUS_PENGELOLAAN_BLANKO" />
+      <End Role="PENGELOLAAN_BLANKO" EntitySet="PENGELOLAAN_BLANKO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPE_BLANKO" Association="Model.FK_TIPE_BLANKO">
+      <End Role="TIPE_BLANKO" EntitySet="TIPE_BLANKO" />
+      <End Role="PENGELOLAAN_BLANKO" EntitySet="PENGELOLAAN_BLANKO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPE_PROSES_BLANKO" Association="Model.FK_TIPE_PROSES_BLANKO">
+      <End Role="TIPE_PROSES_BLANKO" EntitySet="TIPE_PROSES_BLANKO" />
+      <End Role="PENGELOLAAN_BLANKO" EntitySet="PENGELOLAAN_BLANKO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USERPERORANGAN" Association="Model.FK_USERPERORANGAN">
+      <End Role="USERPERORANGAN" EntitySet="USERPERORANGANs" />
+      <End Role="PENGELOLAAN_BLANKO" EntitySet="PENGELOLAAN_BLANKO" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BERITA_ACARA">
+    <Key>
+      <PropertyRef Name="BERITA_ACARA_ID" />
+    </Key>
+    <Property Name="BERITA_ACARA_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="NOMOR_BERITA_ACARA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FILE" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="PENGELOLAAN_BLANKO" Relationship="Model.FK_BERITA_ACARA" FromRole="BERITA_ACARA" ToRole="PENGELOLAAN_BLANKO" />
+  </EntityType>
+  <EntityType Name="BLANKO">
+    <Key>
+      <PropertyRef Name="BLANKOID" />
+    </Key>
+    <Property Name="BLANKOID" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="SERI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TAHUN" Type="Int16" />
+    <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="BERKASID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="TANGGALSISIP" Type="DateTime" />
+    <Property Name="PETUGASSISIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="KANTORID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PENGAMBIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DI301" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="DI208" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="DI301A" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="NOMORHAK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="TANGGALHAK" Type="DateTime" />
+    <Property Name="TANGGALPEMBUKUAN" Type="DateTime" />
+    <Property Name="TANGGALPENYERAHAN" Type="DateTime" />
+    <Property Name="TANGGALSUNTING" Type="DateTime" />
+    <Property Name="PETUGASSUNTING" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TIPE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="DI307" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="TANGGALSELESAISPP" Type="DateTime" />
+    <Property Name="BERITAACARAPEMBATALANID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="BERITAACARAPENYERAHANID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="TANGGALSINKRONISASI" Type="DateTime" />
+    <Property Name="VERSI" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TANGGALPERUBAHAN" Type="DateTime" />
+    <Property Name="STATUSHAPUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="USERHAPUS" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="BERITAACARAPENGEMBALIANID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="STATUSKOREKSIKANWIL" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="STATUSKOREKSIKANTAH" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="POSITION" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DISTRIBUTION_ID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="BERITAACARAPENYERAHANIDKNTH" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PENGELOLAAN_BLANKO" Relationship="Model.FK_BLANKO" FromRole="BLANKO" ToRole="PENGELOLAAN_BLANKO" />
+  </EntityType>
+  <EntityType Name="KANTOR">
+    <Key>
+      <PropertyRef Name="KANTORID" />
+    </Key>
+    <Property Name="KANTORID" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="KODE" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="NAMA" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="KOTA" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ALAMAT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="TELEPON" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FAX" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VALIDSEJAK" Type="DateTime" />
+    <Property Name="VALIDSAMPAI" Type="DateTime" />
+    <Property Name="HSBKU1" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="HSBKU2" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="HSBKPA1" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="HSBKPA2" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="HSBKPP1" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="HSBKPP2" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="HSBKPM1" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="HSBKPM2" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="HSBKPB" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="PEMBULATANLUAS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="KODESK" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TANGGALAWAL" Type="Int16" />
+    <Property Name="BULANAWAL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TANGGALAKHIR" Type="Int16" />
+    <Property Name="BULANAKHIR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="INDUK" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="TIPEKANTORID" Type="Int16" />
+    <Property Name="TGLSK_PEMERIKSA" Type="DateTime" />
+    <Property Name="NOSK_PEMERIKSA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TANGGALMULAI" Type="DateTime" />
+    <Property Name="TIPEKONEKSI" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NAMAPROVIDER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BANDWIDTH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TIPOLOGI" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="REGIONAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DIREKTORI" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="APLIKASI" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="PAGUBERKASONLINE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="EXPIREBERKASONLINE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="STATUSMINTABT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TIPEPETADASAR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SMSBERKASSELESAI" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SMSUMUMSELESAI" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SMSNODESELESAI" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SERTIPIKATSELEMBAR" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SIMPONIONLINE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="BAGIANAPP_BLANKO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="KODESATKER" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="JUALBELIKHUSUS" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="NILAIPRODA" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="STATUSLAT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="PEMBAGIANAPP_BLANKOPUSAT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="LUASKM2" Type="Int32" />
+    <Property Name="SUMBERLUAS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NAMAALIAS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LAYER_GISTARU" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="URL_GISTARU" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="PASSPHRASE" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SUBSCRIBERID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="USERINSERT" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="INSERTDATE" Type="DateTime" />
+    <Property Name="TTDID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="BERITAACARAID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="LATITUDE" Type="Decimal" Precision="20" Scale="6" />
+    <Property Name="LONGITUDE" Type="Decimal" Precision="20" Scale="6" />
+    <NavigationProperty Name="USERPERORANGANs" Relationship="Model.FK_KANTOR" FromRole="KANTOR" ToRole="USERPERORANGAN" />
+  </EntityType>
+  <EntityType Name="PENGELOLAAN_BLANKO">
+    <Key>
+      <PropertyRef Name="PENGELOLAAN_BLANKO_ID" />
+    </Key>
+    <Property Name="PENGELOLAAN_BLANKO_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="BERITA_ACARA_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TIPE_BLANKO_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TIPE_PROSES_BLANKO_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="STATUS_PENGELOLAAN_BLANKO_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TANGGAL_PEMBUATAN" Type="DateTime" />
+    <Property Name="BLANKOID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="USERPERORANGANID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BERITA_ACARA" Relationship="Model.FK_BERITA_ACARA" FromRole="PENGELOLAAN_BLANKO" ToRole="BERITA_ACARA" />
+    <NavigationProperty Name="BLANKO" Relationship="Model.FK_BLANKO" FromRole="PENGELOLAAN_BLANKO" ToRole="BLANKO" />
+    <NavigationProperty Name="STATUS_PENGELOLAAN_BLANKO" Relationship="Model.FK_STATUS_PENGELOLAAN_BLANKO" FromRole="PENGELOLAAN_BLANKO" ToRole="STATUS_PENGELOLAAN_BLANKO" />
+    <NavigationProperty Name="TIPE_BLANKO" Relationship="Model.FK_TIPE_BLANKO" FromRole="PENGELOLAAN_BLANKO" ToRole="TIPE_BLANKO" />
+    <NavigationProperty Name="TIPE_PROSES_BLANKO" Relationship="Model.FK_TIPE_PROSES_BLANKO" FromRole="PENGELOLAAN_BLANKO" ToRole="TIPE_PROSES_BLANKO" />
+    <NavigationProperty Name="USERPERORANGAN" Relationship="Model.FK_USERPERORANGAN" FromRole="PENGELOLAAN_BLANKO" ToRole="USERPERORANGAN" />
+  </EntityType>
+  <EntityType Name="STATUS_PENGELOLAAN_BLANKO">
+    <Key>
+      <PropertyRef Name="STATUS_PENGELOLAAN_BLANKO_ID" />
+    </Key>
+    <Property Name="STATUS_PENGELOLAAN_BLANKO_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="NAMA_STATUS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PENGELOLAAN_BLANKO" Relationship="Model.FK_STATUS_PENGELOLAAN_BLANKO" FromRole="STATUS_PENGELOLAAN_BLANKO" ToRole="PENGELOLAAN_BLANKO" />
+  </EntityType>
+  <EntityType Name="TIPE_BLANKO">
+    <Key>
+      <PropertyRef Name="TIPE_BLANKO_ID" />
+    </Key>
+    <Property Name="TIPE_BLANKO_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="TIPE_BLANKO_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TIPE_BLANKO_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TIPE_BLANKO_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TIPE_BLANKO_STATUS" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TIPE_BLANKO_CREATE_BY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TIPE_BLANKO_CREATE_DATE" Type="DateTime" />
+    <Property Name="TIPE_BLANKO_UPDATE_BY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TIPE_BLANKO_UPDATE_DATE" Type="DateTime" />
+    <NavigationProperty Name="PENGELOLAAN_BLANKO" Relationship="Model.FK_TIPE_BLANKO" FromRole="TIPE_BLANKO" ToRole="PENGELOLAAN_BLANKO" />
+  </EntityType>
+  <EntityType Name="TIPE_PROSES_BLANKO">
+    <Key>
+      <PropertyRef Name="TIPE_PROSES_BLANKO_ID" />
+    </Key>
+    <Property Name="TIPE_PROSES_BLANKO_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="NAMA_PROSES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PENGELOLAAN_BLANKO" Relationship="Model.FK_TIPE_PROSES_BLANKO" FromRole="TIPE_PROSES_BLANKO" ToRole="PENGELOLAAN_BLANKO" />
+  </EntityType>
+  <EntityType Name="USERPERORANGAN">
+    <Key>
+      <PropertyRef Name="USERPERORANGANID" />
+    </Key>
+    <Property Name="USERPERORANGANID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TANGGALDAFTAR" Type="DateTime" />
+    <Property Name="NAMA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NOMORIDENTITAS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TEMPATLAHIR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TANGGALLAHIR" Type="DateTime" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUSHAPUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="USERHAPUS" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="URLPROFILE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="NOMORHP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="JENISKELAMIN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ALAMAT" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="STATUSVALIDASI" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TANGGALVALIDASI" Type="DateTime" />
+    <Property Name="STATUSVERIFIKASI" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TANGGALVERIFIKASI" Type="DateTime" />
+    <Property Name="VALIDSEJAK" Type="DateTime" />
+    <Property Name="VALIDSAMPAI" Type="DateTime" />
+    <Property Name="RTRW" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="KODEPOS" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="KODEKONFIRMASI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PEKERJAAN" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="KODEUSER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="STATUSMIGRASI" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="NPWP" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="AKUNPERTANAHAN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="REFERENSIID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="URLFOTOIDENTITAS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="URLFOTOSELFIE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="JENISIDENTITAS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="KEWARGANEGARAAN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="KANTORID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="WILAYAHID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="KOTA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUSAKTIVASI" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TANGGALAKTIVASI" Type="DateTime" />
+    <Property Name="USERAKTIVASI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="KANTORAKTIVASI" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="VALIDSEJAKPETUGASPM" Type="DateTime" />
+    <Property Name="VALIDSAMPAIPETUGASPM" Type="DateTime" />
+    <Property Name="TANGGALPETUGASPM" Type="DateTime" />
+    <Property Name="USERPETUGASPM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="KANTORPETUGASPM" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="ALASANPERURI" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="STATUSKAWIN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ISPERURI" Type="Int16" />
+    <Property Name="ANOMALI" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TANGGALANOMALI" Type="DateTime" />
+    <Property Name="EMAILLOWER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="KANTOR" Relationship="Model.FK_KANTOR" FromRole="USERPERORANGAN" ToRole="KANTOR" />
+    <NavigationProperty Name="PENGELOLAAN_BLANKO" Relationship="Model.FK_USERPERORANGAN" FromRole="USERPERORANGAN" ToRole="PENGELOLAAN_BLANKO" />
+  </EntityType>
+  <Association Name="FK_BERITA_ACARA">
+    <End Type="Model.BERITA_ACARA" Role="BERITA_ACARA" Multiplicity="0..1" />
+    <End Type="Model.PENGELOLAAN_BLANKO" Role="PENGELOLAAN_BLANKO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BERITA_ACARA">
+        <PropertyRef Name="BERITA_ACARA_ID" />
+      </Principal>
+      <Dependent Role="PENGELOLAAN_BLANKO">
+        <PropertyRef Name="BERITA_ACARA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BLANKO">
+    <End Type="Model.BLANKO" Role="BLANKO" Multiplicity="0..1" />
+    <End Type="Model.PENGELOLAAN_BLANKO" Role="PENGELOLAAN_BLANKO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BLANKO">
+        <PropertyRef Name="BLANKOID" />
+      </Principal>
+      <Dependent Role="PENGELOLAAN_BLANKO">
+        <PropertyRef Name="BLANKOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KANTOR">
+    <End Type="Model.KANTOR" Role="KANTOR" Multiplicity="0..1" />
+    <End Type="Model.USERPERORANGAN" Role="USERPERORANGAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KANTOR">
+        <PropertyRef Name="KANTORID" />
+      </Principal>
+      <Dependent Role="USERPERORANGAN">
+        <PropertyRef Name="KANTORID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STATUS_PENGELOLAAN_BLANKO">
+    <End Type="Model.STATUS_PENGELOLAAN_BLANKO" Role="STATUS_PENGELOLAAN_BLANKO" Multiplicity="0..1" />
+    <End Type="Model.PENGELOLAAN_BLANKO" Role="PENGELOLAAN_BLANKO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STATUS_PENGELOLAAN_BLANKO">
+        <PropertyRef Name="STATUS_PENGELOLAAN_BLANKO_ID" />
+      </Principal>
+      <Dependent Role="PENGELOLAAN_BLANKO">
+        <PropertyRef Name="STATUS_PENGELOLAAN_BLANKO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPE_BLANKO">
+    <End Type="Model.TIPE_BLANKO" Role="TIPE_BLANKO" Multiplicity="0..1" />
+    <End Type="Model.PENGELOLAAN_BLANKO" Role="PENGELOLAAN_BLANKO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPE_BLANKO">
+        <PropertyRef Name="TIPE_BLANKO_ID" />
+      </Principal>
+      <Dependent Role="PENGELOLAAN_BLANKO">
+        <PropertyRef Name="TIPE_BLANKO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPE_PROSES_BLANKO">
+    <End Type="Model.TIPE_PROSES_BLANKO" Role="TIPE_PROSES_BLANKO" Multiplicity="0..1" />
+    <End Type="Model.PENGELOLAAN_BLANKO" Role="PENGELOLAAN_BLANKO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPE_PROSES_BLANKO">
+        <PropertyRef Name="TIPE_PROSES_BLANKO_ID" />
+      </Principal>
+      <Dependent Role="PENGELOLAAN_BLANKO">
+        <PropertyRef Name="TIPE_PROSES_BLANKO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USERPERORANGAN">
+    <End Type="Model.USERPERORANGAN" Role="USERPERORANGAN" Multiplicity="0..1" />
+    <End Type="Model.PENGELOLAAN_BLANKO" Role="PENGELOLAAN_BLANKO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERPERORANGAN">
+        <PropertyRef Name="USERPERORANGANID" />
+      </Principal>
+      <Dependent Role="PENGELOLAAN_BLANKO">
+        <PropertyRef Name="USERPERORANGANID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

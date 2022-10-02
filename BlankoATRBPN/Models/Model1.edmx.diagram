@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="83a6fecf2e6f4f5d87fb2bf95371ecf4" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.BERITA_ACARA" Width="1.5" PointX="3" PointY="33.75" />
+        <EntityTypeShape EntityType="Model.BLANKO" Width="1.5" PointX="3" PointY="16.875" />
+        <EntityTypeShape EntityType="Model.KANTOR" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="Model.PENGELOLAAN_BLANKO" Width="2.75" PointX="6" PointY="6.375" />
+        <EntityTypeShape EntityType="Model.STATUS_PENGELOLAAN_BLANKO" Width="2.5" PointX="2" PointY="29" />
+        <EntityTypeShape EntityType="Model.TIPE_BLANKO" Width="1.5" PointX="3" PointY="25.375" />
+        <EntityTypeShape EntityType="Model.TIPE_PROSES_BLANKO" Width="1.5" PointX="3" PointY="31.375" />
+        <EntityTypeShape EntityType="Model.USERPERORANGAN" Width="2" PointX="3" PointY="2.75" />
+        <AssociationConnector Association="Model.FK_BERITA_ACARA" />
+        <AssociationConnector Association="Model.FK_BLANKO" />
+        <AssociationConnector Association="Model.FK_KANTOR" />
+        <AssociationConnector Association="Model.FK_STATUS_PENGELOLAAN_BLANKO" />
+        <AssociationConnector Association="Model.FK_TIPE_BLANKO" />
+        <AssociationConnector Association="Model.FK_TIPE_PROSES_BLANKO" />
+        <AssociationConnector Association="Model.FK_USERPERORANGAN" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

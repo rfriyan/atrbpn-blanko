@@ -1,0 +1,23 @@
+﻿
+td.details-control {
+    background: url('../images/details_open.png') no-repeat center center;
+    /*    background-image: url('../images/details_open.png');*/
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('../images/details_close.png') no-repeat center center;
+    /*    background-image: url('../images/details_close.png');*/
+}
+
+
+td.details-control1 {
+    background: url('../images/details_open.png') no-repeat center center;
+    /*    background-image: url('../images/details_open.png');*/
+    cursor: pointer;
+}
+
+tr.shown td.details-control1 {
+    background: url('../images/details_close.png') no-repeat center center;
+    /*background-image: url('../images/details_close.png');*/
+}

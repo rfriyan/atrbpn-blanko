@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="BERITA_ACARA">
+      <EntityTypeMapping TypeName="Model.BERITA_ACARA">
+        <MappingFragment StoreEntitySet="BERITA_ACARA">
+          <ScalarProperty Name="FILE" ColumnName="FILE" />
+          <ScalarProperty Name="NOMOR_BERITA_ACARA" ColumnName="NOMOR_BERITA_ACARA" />
+          <ScalarProperty Name="BERITA_ACARA_ID" ColumnName="BERITA_ACARA_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BLANKOes">
+      <EntityTypeMapping TypeName="Model.BLANKO">
+        <MappingFragment StoreEntitySet="BLANKO">
+          <ScalarProperty Name="BERITAACARAPENYERAHANIDKNTH" ColumnName="BERITAACARAPENYERAHANIDKNTH" />
+          <ScalarProperty Name="DISTRIBUTION_ID" ColumnName="DISTRIBUTION_ID" />
+          <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+          <ScalarProperty Name="STATUSKOREKSIKANTAH" ColumnName="STATUSKOREKSIKANTAH" />
+          <ScalarProperty Name="STATUSKOREKSIKANWIL" ColumnName="STATUSKOREKSIKANWIL" />
+          <ScalarProperty Name="BERITAACARAPENGEMBALIANID" ColumnName="BERITAACARAPENGEMBALIANID" />
+          <ScalarProperty Name="USERHAPUS" ColumnName="USERHAPUS" />
+          <ScalarProperty Name="STATUSHAPUS" ColumnName="STATUSHAPUS" />
+          <ScalarProperty Name="TANGGALPERUBAHAN" ColumnName="TANGGALPERUBAHAN" />
+          <ScalarProperty Name="VERSI" ColumnName="VERSI" />
+          <ScalarProperty Name="TANGGALSINKRONISASI" ColumnName="TANGGALSINKRONISASI" />
+          <ScalarProperty Name="BERITAACARAPENYERAHANID" ColumnName="BERITAACARAPENYERAHANID" />
+          <ScalarProperty Name="BERITAACARAPEMBATALANID" ColumnName="BERITAACARAPEMBATALANID" />
+          <ScalarProperty Name="TANGGALSELESAISPP" ColumnName="TANGGALSELESAISPP" />
+          <ScalarProperty Name="DI307" ColumnName="DI307" />
+          <ScalarProperty Name="TIPE" ColumnName="TIPE" />
+          <ScalarProperty Name="PETUGASSUNTING" ColumnName="PETUGASSUNTING" />
+          <ScalarProperty Name="TANGGALSUNTING" ColumnName="TANGGALSUNTING" />
+          <ScalarProperty Name="TANGGALPENYERAHAN" ColumnName="TANGGALPENYERAHAN" />
+          <ScalarProperty Name="TANGGALPEMBUKUAN" ColumnName="TANGGALPEMBUKUAN" />
+          <ScalarProperty Name="TANGGALHAK" ColumnName="TANGGALHAK" />
+          <ScalarProperty Name="NOMORHAK" ColumnName="NOMORHAK" />
+          <ScalarProperty Name="DI301A" ColumnName="DI301A" />
+          <ScalarProperty Name="DI208" ColumnName="DI208" />
+          <ScalarProperty Name="DI301" ColumnName="DI301" />
+          <ScalarProperty Name="PENGAMBIL" ColumnName="PENGAMBIL" />
+          <ScalarProperty Name="KANTORID" ColumnName="KANTORID" />
+          <ScalarProperty Name="PETUGASSISIP" ColumnName="PETUGASSISIP" />
+          <ScalarProperty Name="TANGGALSISIP" ColumnName="TANGGALSISIP" />
+          <ScalarProperty Name="BERKASID" ColumnName="BERKASID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="TAHUN" ColumnName="TAHUN" />
+          <ScalarProperty Name="SERI" ColumnName="SERI" />
+          <ScalarProperty Name="BLANKOID" ColumnName="BLANKOID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KANTORs">
+      <EntityTypeMapping TypeName="Model.KANTOR">
+        <MappingFragment StoreEntitySet="KANTOR">
+          <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+          <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+          <ScalarProperty Name="BERITAACARAID" ColumnName="BERITAACARAID" />
+          <ScalarProperty Name="TTDID" ColumnName="TTDID" />
+          <ScalarProperty Name="INSERTDATE" ColumnName="INSERTDATE" />
+          <ScalarProperty Name="USERINSERT" ColumnName="USERINSERT" />
+          <ScalarProperty Name="SUBSCRIBERID" ColumnName="SUBSCRIBERID" />
+          <ScalarProperty Name="PASSPHRASE" ColumnName="PASSPHRASE" />
+          <ScalarProperty Name="URL_GISTARU" ColumnName="URL_GISTARU" />
+          <ScalarProperty Name="LAYER_GISTARU" ColumnName="LAYER_GISTARU" />
+          <ScalarProperty Name="NAMAALIAS" ColumnName="NAMAALIAS" />
+          <ScalarProperty Name="SUMBERLUAS" ColumnName="SUMBERLUAS" />
+          <ScalarProperty Name="LUASKM2" ColumnName="LUASKM2" />
+          <ScalarProperty Name="PEMBAGIANAPP_BLANKOPUSAT" ColumnName="PEMBAGIANAPP_BLANKOPUSAT" />
+          <ScalarProperty Name="STATUSLAT" ColumnName="STATUSLAT" />
+          <ScalarProperty Name="NILAIPRODA" ColumnName="NILAIPRODA" />
+          <ScalarProperty Name="JUALBELIKHUSUS" ColumnName="JUALBELIKHUSUS" />
+          <ScalarProperty Name="KODESATKER" ColumnName="KODESATKER" />
+          <ScalarProperty Name="BAGIANAPP_BLANKO" ColumnName="BAGIANAPP_BLANKO" />
+          <ScalarProperty Name="SIMPONIONLINE" ColumnName="SIMPONIONLINE" />
+          <ScalarProperty Name="SERTIPIKATSELEMBAR" ColumnName="SERTIPIKATSELEMBAR" />
+          <ScalarProperty Name="SMSNODESELESAI" ColumnName="SMSNODESELESAI" />
+          <ScalarProperty Name="SMSUMUMSELESAI" ColumnName="SMSUMUMSELESAI" />
+          <ScalarProperty Name="SMSBERKASSELESAI" ColumnName="SMSBERKASSELESAI" />
+          <ScalarProperty Name="TIPEPETADASAR" ColumnName="TIPEPETADASAR" />
+          <ScalarProperty Name="STATUSMINTABT" ColumnName="STATUSMINTABT" />
+          <ScalarProperty Name="EXPIREBERKASONLINE" ColumnName="EXPIREBERKASONLINE" />
+          <ScalarProperty Name="PAGUBERKASONLINE" ColumnName="PAGUBERKASONLINE" />
+          <ScalarProperty Name="APLIKASI" ColumnName="APLIKASI" />
+          <ScalarProperty Name="DIREKTORI" ColumnName="DIREKTORI" />
+          <ScalarProperty Name="REGIONAL" ColumnName="REGIONAL" />
+          <ScalarProperty Name="TIPOLOGI" ColumnName="TIPOLOGI" />
+          <ScalarProperty Name="BANDWIDTH" ColumnName="BANDWIDTH" />
+          <ScalarProperty Name="NAMAPROVIDER" ColumnName="NAMAPROVIDER" />
+          <ScalarProperty Name="TIPEKONEKSI" ColumnName="TIPEKONEKSI" />
+          <ScalarProperty Name="TANGGALMULAI" ColumnName="TANGGALMULAI" />
+          <ScalarProperty Name="NOSK_PEMERIKSA" ColumnName="NOSK_PEMERIKSA" />
+          <ScalarProperty Name="TGLSK_PEMERIKSA" ColumnName="TGLSK_PEMERIKSA" />
+          <ScalarProperty Name="TIPEKANTORID" ColumnName="TIPEKANTORID" />
+          <ScalarProperty Name="INDUK" ColumnName="INDUK" />
+          <ScalarProperty Name="BULANAKHIR" ColumnName="BULANAKHIR" />
+          <ScalarProperty Name="TANGGALAKHIR" ColumnName="TANGGALAKHIR" />
+          <ScalarProperty Name="BULANAWAL" ColumnName="BULANAWAL" />
+          <ScalarProperty Name="TANGGALAWAL" ColumnName="TANGGALAWAL" />
+          <ScalarProperty Name="KODESK" ColumnName="KODESK" />
+          <ScalarProperty Name="PEMBULATANLUAS" ColumnName="PEMBULATANLUAS" />
+          <ScalarProperty Name="HSBKPB" ColumnName="HSBKPB" />
+          <ScalarProperty Name="HSBKPM2" ColumnName="HSBKPM2" />
+          <ScalarProperty Name="HSBKPM1" ColumnName="HSBKPM1" />
+          <ScalarProperty Name="HSBKPP2" ColumnName="HSBKPP2" />
+          <ScalarProperty Name="HSBKPP1" ColumnName="HSBKPP1" />
+          <ScalarProperty Name="HSBKPA2" ColumnName="HSBKPA2" />
+          <ScalarProperty Name="HSBKPA1" ColumnName="HSBKPA1" />
+          <ScalarProperty Name="HSBKU2" ColumnName="HSBKU2" />
+          <ScalarProperty Name="HSBKU1" ColumnName="HSBKU1" />
+          <ScalarProperty Name="VALIDSAMPAI" ColumnName="VALIDSAMPAI" />
+          <ScalarProperty Name="VALIDSEJAK" ColumnName="VALIDSEJAK" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="TELEPON" ColumnName="TELEPON" />
+          <ScalarProperty Name="ALAMAT" ColumnName="ALAMAT" />
+          <ScalarProperty Name="KOTA" ColumnName="KOTA" />
+          <ScalarProperty Name="NAMA" ColumnName="NAMA" />
+          <ScalarProperty Name="KODE" ColumnName="KODE" />
+          <ScalarProperty Name="KANTORID" ColumnName="KANTORID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PENGELOLAAN_BLANKO">
+      <EntityTypeMapping TypeName="Model.PENGELOLAAN_BLANKO">
+        <MappingFragment StoreEntitySet="PENGELOLAAN_BLANKO">
+          <ScalarProperty Name="USERPERORANGANID" ColumnName="USERPERORANGANID" />
+          <ScalarProperty Name="BLANKOID" ColumnName="BLANKOID" />
+          <ScalarProperty Name="TANGGAL_PEMBUATAN" ColumnName="TANGGAL_PEMBUATAN" />
+          <ScalarProperty Name="STATUS_PENGELOLAAN_BLANKO_ID" ColumnName="STATUS_PENGELOLAAN_BLANKO_ID" />
+          <ScalarProperty Name="TIPE_PROSES_BLANKO_ID" ColumnName="TIPE_PROSES_BLANKO_ID" />
+          <ScalarProperty Name="TIPE_BLANKO_ID" ColumnName="TIPE_BLANKO_ID" />
+          <ScalarProperty Name="BERITA_ACARA_ID" ColumnName="BERITA_ACARA_ID" />
+          <ScalarProperty Name="PENGELOLAAN_BLANKO_ID" ColumnName="PENGELOLAAN_BLANKO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STATUS_PENGELOLAAN_BLANKO">
+      <EntityTypeMapping TypeName="Model.STATUS_PENGELOLAAN_BLANKO">
+        <MappingFragment StoreEntitySet="STATUS_PENGELOLAAN_BLANKO">
+          <ScalarProperty Name="NAMA_STATUS" ColumnName="NAMA_STATUS" />
+          <ScalarProperty Name="STATUS_PENGELOLAAN_BLANKO_ID" ColumnName="STATUS_PENGELOLAAN_BLANKO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPE_BLANKO">
+      <EntityTypeMapping TypeName="Model.TIPE_BLANKO">
+        <MappingFragment StoreEntitySet="TIPE_BLANKO">
+          <ScalarProperty Name="TIPE_BLANKO_UPDATE_DATE" ColumnName="TIPE_BLANKO_UPDATE_DATE" />
+          <ScalarProperty Name="TIPE_BLANKO_UPDATE_BY" ColumnName="TIPE_BLANKO_UPDATE_BY" />
+          <ScalarProperty Name="TIPE_BLANKO_CREATE_DATE" ColumnName="TIPE_BLANKO_CREATE_DATE" />
+          <ScalarProperty Name="TIPE_BLANKO_CREATE_BY" ColumnName="TIPE_BLANKO_CREATE_BY" />
+          <ScalarProperty Name="TIPE_BLANKO_STATUS" ColumnName="TIPE_BLANKO_STATUS" />
+          <ScalarProperty Name="TIPE_BLANKO_DESCRIPTION" ColumnName="TIPE_BLANKO_DESCRIPTION" />
+          <ScalarProperty Name="TIPE_BLANKO_NAME" ColumnName="TIPE_BLANKO_NAME" />
+          <ScalarProperty Name="TIPE_BLANKO_CODE" ColumnName="TIPE_BLANKO_CODE" />
+          <ScalarProperty Name="TIPE_BLANKO_ID" ColumnName="TIPE_BLANKO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPE_PROSES_BLANKO">
+      <EntityTypeMapping TypeName="Model.TIPE_PROSES_BLANKO">
+        <MappingFragment StoreEntitySet="TIPE_PROSES_BLANKO">
+          <ScalarProperty Name="NAMA_PROSES" ColumnName="NAMA_PROSES" />
+          <ScalarProperty Name="TIPE_PROSES_BLANKO_ID" ColumnName="TIPE_PROSES_BLANKO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERPERORANGANs">
+      <EntityTypeMapping TypeName="Model.USERPERORANGAN">
+        <MappingFragment StoreEntitySet="USERPERORANGAN">
+          <ScalarProperty Name="EMAILLOWER" ColumnName="EMAILLOWER" />
+          <ScalarProperty Name="TANGGALANOMALI" ColumnName="TANGGALANOMALI" />
+          <ScalarProperty Name="ANOMALI" ColumnName="ANOMALI" />
+          <ScalarProperty Name="ISPERURI" ColumnName="ISPERURI" />
+          <ScalarProperty Name="STATUSKAWIN" ColumnName="STATUSKAWIN" />
+          <ScalarProperty Name="ALASANPERURI" ColumnName="ALASANPERURI" />
+          <ScalarProperty Name="KANTORPETUGASPM" ColumnName="KANTORPETUGASPM" />
+          <ScalarProperty Name="USERPETUGASPM" ColumnName="USERPETUGASPM" />
+          <ScalarProperty Name="TANGGALPETUGASPM" ColumnName="TANGGALPETUGASPM" />
+          <ScalarProperty Name="VALIDSAMPAIPETUGASPM" ColumnName="VALIDSAMPAIPETUGASPM" />
+          <ScalarProperty Name="VALIDSEJAKPETUGASPM" ColumnName="VALIDSEJAKPETUGASPM" />
+          <ScalarProperty Name="KANTORAKTIVASI" ColumnName="KANTORAKTIVASI" />
+          <ScalarProperty Name="USERAKTIVASI" ColumnName="USERAKTIVASI" />
+          <ScalarProperty Name="TANGGALAKTIVASI" ColumnName="TANGGALAKTIVASI" />
+          <ScalarProperty Name="STATUSAKTIVASI" ColumnName="STATUSAKTIVASI" />
+          <ScalarProperty Name="KOTA" ColumnName="KOTA" />
+          <ScalarProperty Name="WILAYAHID" ColumnName="WILAYAHID" />
+          <ScalarProperty Name="KANTORID" ColumnName="KANTORID" />
+          <ScalarProperty Name="KEWARGANEGARAAN" ColumnName="KEWARGANEGARAAN" />
+          <ScalarProperty Name="JENISIDENTITAS" ColumnName="JENISIDENTITAS" />
+          <ScalarProperty Name="URLFOTOSELFIE" ColumnName="URLFOTOSELFIE" />
+          <ScalarProperty Name="URLFOTOIDENTITAS" ColumnName="URLFOTOIDENTITAS" />
+          <ScalarProperty Name="REFERENSIID" ColumnName="REFERENSIID" />
+          <ScalarProperty Name="AKUNPERTANAHAN" ColumnName="AKUNPERTANAHAN" />
+          <ScalarProperty Name="NPWP" ColumnName="NPWP" />
+          <ScalarProperty Name="STATUSMIGRASI" ColumnName="STATUSMIGRASI" />
+          <ScalarProperty Name="KODEUSER" ColumnName="KODEUSER" />
+          <ScalarProperty Name="PEKERJAAN" ColumnName="PEKERJAAN" />
+          <ScalarProperty Name="KODEKONFIRMASI" ColumnName="KODEKONFIRMASI" />
+          <ScalarProperty Name="KODEPOS" ColumnName="KODEPOS" />
+          <ScalarProperty Name="RTRW" ColumnName="RTRW" />
+          <ScalarProperty Name="VALIDSAMPAI" ColumnName="VALIDSAMPAI" />
+          <ScalarProperty Name="VALIDSEJAK" ColumnName="VALIDSEJAK" />
+          <ScalarProperty Name="TANGGALVERIFIKASI" ColumnName="TANGGALVERIFIKASI" />
+          <ScalarProperty Name="STATUSVERIFIKASI" ColumnName="STATUSVERIFIKASI" />
+          <ScalarProperty Name="TANGGALVALIDASI" ColumnName="TANGGALVALIDASI" />
+          <ScalarProperty Name="STATUSVALIDASI" ColumnName="STATUSVALIDASI" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ALAMAT" ColumnName="ALAMAT" />
+          <ScalarProperty Name="JENISKELAMIN" ColumnName="JENISKELAMIN" />
+          <ScalarProperty Name="NOMORHP" ColumnName="NOMORHP" />
+          <ScalarProperty Name="URLPROFILE" ColumnName="URLPROFILE" />
+          <ScalarProperty Name="USERHAPUS" ColumnName="USERHAPUS" />
+          <ScalarProperty Name="STATUSHAPUS" ColumnName="STATUSHAPUS" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TANGGALLAHIR" ColumnName="TANGGALLAHIR" />
+          <ScalarProperty Name="TEMPATLAHIR" ColumnName="TEMPATLAHIR" />
+          <ScalarProperty Name="NOMORIDENTITAS" ColumnName="NOMORIDENTITAS" />
+          <ScalarProperty Name="NAMA" ColumnName="NAMA" />
+          <ScalarProperty Name="TANGGALDAFTAR" ColumnName="TANGGALDAFTAR" />
+          <ScalarProperty Name="USERPERORANGANID" ColumnName="USERPERORANGANID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

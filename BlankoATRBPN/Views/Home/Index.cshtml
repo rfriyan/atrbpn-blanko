@@ -1,0 +1,125 @@
+﻿@{
+
+}
+
+<!-- page content -->
+<div class="">
+    @*<div class="row top_tiles">
+            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
+                    <div class="count">179</div>
+                    <h3>New Sign ups</h3>
+                    <p>Lorem ipsum psdea itgum rixt.</p>
+                </div>
+            </div>
+            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <div class="icon"><i class="fa fa-comments-o"></i></div>
+                    <div class="count">179</div>
+                    <h3>New Sign ups</h3>
+                    <p>Lorem ipsum psdea itgum rixt.</p>
+                </div>
+            </div>
+            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                    <div class="count">179</div>
+                    <h3>New Sign ups</h3>
+                    <p>Lorem ipsum psdea itgum rixt.</p>
+                </div>
+            </div>
+            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <div class="icon"><i class="fa fa-check-square-o"></i></div>
+                    <div class="count">179</div>
+                    <h3>New Sign ups</h3>
+                    <p>Lorem ipsum psdea itgum rixt.</p>
+                </div>
+            </div>
+        </div>*@
+
+    @*<div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Grafik Penjualan Kue <small>Pertahun ini</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="demo-container" style="height:280px">
+                            <div id="grafik_penjualan_kue" class="demo-placeholder"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+</div>
+<!-- /page content -->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var grafik_penjualan_kue_data = [
+                [1, 0],
+                [2, 0],
+                [3, 0],
+                [4, 0],
+                [5, 0],
+                [6, 0],
+                [7, 0],
+                [8, 0],
+                [9, 0],
+                [10,0],
+                [11,0],
+                [12,0],
+
+            ];
+            var array = @Html.Raw(Json.Encode(@ViewBag.DataPenjualan));
+            for(var i = 0; i < array.length; i++) {
+                grafik_penjualan_kue_data[i][1] = array[i];
+            }
+
+
+            var grafik_penjualan_kue_settings = {
+                series: {
+                    curvedLines: {
+                        apply: true,
+                        active: true,
+                        monotonicFit: true
+                    }
+                },
+                colors: ["#26B99A"],
+                grid: {
+                    borderWidth: {
+                        top: 0,
+                        right: 0,
+                        bottom: 1,
+                        left: 1
+                    },
+                    borderColor: {
+                        bottom: "#7F8790",
+                        left: "#7F8790"
+                    }
+                }
+            };
+
+            if ($("#grafik_penjualan_kue").length) {
+                $.plot($("#grafik_penjualan_kue"), [{
+                    label: "Penjualan Kue Setiap Bulan",
+                    data: grafik_penjualan_kue_data,
+                    lines: {
+                        fillColor: "rgba(150, 202, 89, 0.12)"
+                    },
+                    points: {
+                        fillColor: "#fff"
+                    }
+                }], grafik_penjualan_kue_settings);
+
+            };
+        });
+    </script>
+}

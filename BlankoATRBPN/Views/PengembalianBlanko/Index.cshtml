@@ -1,0 +1,158 @@
+﻿@{ ViewBag.Title = "Pengembaian Blanko"; }
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2 style="font-size:25px">Usulan Pengembalian Blanko</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div>
+                    <a href="@Url.Action("Create")" id="btn-add" class="btn btn-primary " style="float:right" type="submit"> Tambah Pengembalian Blanko</a>
+                    <br /><br />
+                </div>
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table id="datatable2" class="table table-striped table-bordered dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable-buttons_info">
+                                    <thead>
+                                        <tr>
+                                           
+                                            <th>
+                                                No
+                                            </th>
+                                            <th>
+                                                Tanggal
+                                            </th>
+                                            <th>
+                                                Blanko
+                                            </th>
+                                            <th>
+                                                Tipe Blanko
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.Hidden("item-to-delete", "", new { @id = "item-to-delete" })
+@section Scripts {
+    <script>
+        var table;
+        $(document).ready(function () {
+            table = $('#datatable2').DataTable({
+                //"language": {
+                //    "lengthMenu": "Tampikan MENU data",
+                //    "search": "Cari:",
+                //    "info": "Tampilkan START sampai END dari TOTAL data",
+                //    "infoEmpty": "Tampilkan 0 sampai 0 dari 0 data",
+                //    "paginate": {
+                //        "previous": "Sebelumnya",
+                //        "next": "Selanjutnya",
+                //        "search": "Cari:"
+                //    }
+                //},
+                ajax: {
+                    type: "GET",
+                    url: '@Url.Action("GetPengembalian")',
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8"
+                },
+                columns: [
+                    { "data": "no", "autoWidth": true },
+                    {
+                        "data": "tanggal", "autoWidth": true, "render": function (data) {
+                            return convertToJavaScriptDate(data);
+                        }
+                    },
+                    { "data": "blanko", "autoWidth": true },
+                    { "data": "tipe_blanko", "autoWidth": true }
+                ]
+            });
+
+            table.on('order.dt search.dt', function () {
+                let i = 1;
+
+                table.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
+                    this.data(i++);
+                });
+            }).draw();
+        })
+    </script>
+    <script>
+        function showPopUp(e) {
+            var id = e.id;
+            $('#item-to-delete').val(id);
+            $('.bs-example-modal-sm').modal('show');
+        }
+
+    $('#btnContinueDelete').click(function() {
+        var id = parseInt($('#item-to-delete').val());
+         $.ajax({
+            type: "POST",
+            url: '@Url.Action("DeleteUkuran")',
+            data: JSON.stringify({ idUkuran: id }), //use id here
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+             success: function (respons) {
+                 if (respons.message == "succes") {
+                     table.ajax.reload();
+                     NotifSucces();
+                 }
+                 else {
+                     $('.bs-example-modal-sm').modal('hide');
+                     NotifFiled()
+                 }
+            },
+             error: function () {
+                 NotifFiled();
+             }
+
+
+            });
+    });
+    </script>
+}
+
+<!-- Small modal -->
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel2">Hapus Data </h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Apakah anda yakin akan menghapus data ini?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger col-lg-3" id="btnContinueDelete" data-dismiss="modal"> Ya</button>
+                <button type="button" class="btn btn-primary col-lg-3 fc-corner-left" data-dismiss="modal">Tidak</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /modals -->
