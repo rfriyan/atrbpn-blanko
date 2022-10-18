@@ -36,7 +36,7 @@ namespace BlankoATRBPN.Controllers
         // GET: PengembalianBlanko/Create
         public ActionResult Create()
         {
-            ViewBag.Blanko = db.BLANKOes.ToList();
+            ViewBag.Blanko = db.BLANKOes.Where(x=>x.STATUS == "C").ToList();
             return View();
         }
 
@@ -46,7 +46,10 @@ namespace BlankoATRBPN.Controllers
         {
             try
             {
+                var id = db.PENGELOLAAN_BLANKO.Max(x => x.BLANKOID).FirstOrDefault();
+                //obj.BLANKOID = id;
                 db.PENGELOLAAN_BLANKO.Add(obj);
+
                 db.SaveChanges();
                 // TODO: Add insert logic here
 
