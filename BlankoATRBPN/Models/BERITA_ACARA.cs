@@ -21,7 +21,7 @@ namespace BlankoATRBPN.Models
     
         public decimal BERITA_ACARA_ID { get; set; }
         public string NOMOR_BERITA_ACARA { get; set; }
-        public byte[] FILE { get; set; }
+        public string FILE_NAME { get; set; }
     
         public virtual ICollection<PENGELOLAAN_BLANKO> PENGELOLAAN_BLANKO { get; set; }
     }

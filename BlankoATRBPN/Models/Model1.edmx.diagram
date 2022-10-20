@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="83a6fecf2e6f4f5d87fb2bf95371ecf4" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.BERITA_ACARA" Width="1.5" PointX="3" PointY="33.75" />
-        <EntityTypeShape EntityType="Model.BLANKO" Width="1.5" PointX="3" PointY="16.875" />
+      <Diagram DiagramId="83a6fecf2e6f4f5d87fb2bf95371ecf4" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="Model.BERITA_ACARA" Width="1.5" PointX="3" PointY="24.125" />
+        <EntityTypeShape EntityType="Model.BLANKO" Width="1.5" PointX="3" PointY="26.625" />
         <EntityTypeShape EntityType="Model.KANTOR" Width="1.5" PointX="0.75" PointY="1.5" />
-        <EntityTypeShape EntityType="Model.PENGELOLAAN_BLANKO" Width="2.75" PointX="6" PointY="6.375" />
-        <EntityTypeShape EntityType="Model.STATUS_PENGELOLAAN_BLANKO" Width="2.5" PointX="2" PointY="29" />
-        <EntityTypeShape EntityType="Model.TIPE_BLANKO" Width="1.5" PointX="3" PointY="25.375" />
-        <EntityTypeShape EntityType="Model.TIPE_PROSES_BLANKO" Width="1.5" PointX="3" PointY="31.375" />
-        <EntityTypeShape EntityType="Model.USERPERORANGAN" Width="2" PointX="3" PointY="2.75" />
+        <EntityTypeShape EntityType="Model.PENGELOLAAN_BLANKO" Width="1.5" PointX="5.25" PointY="6.5" />
+        <EntityTypeShape EntityType="Model.STATUS_PENGELOLAAN_BLANKO" Width="1.5" PointX="3" PointY="15.75" />
+        <EntityTypeShape EntityType="Model.TIPE_BLANKO" Width="1.5" PointX="3" PointY="18" />
+        <EntityTypeShape EntityType="Model.TIPE_PROSES_BLANKO" Width="1.5" PointX="3" PointY="21.75" />
+        <EntityTypeShape EntityType="Model.USERPERORANGAN" Width="1.5" PointX="3" PointY="2.75" />
         <AssociationConnector Association="Model.FK_BERITA_ACARA" />
         <AssociationConnector Association="Model.FK_BLANKO" />
         <AssociationConnector Association="Model.FK_KANTOR" />

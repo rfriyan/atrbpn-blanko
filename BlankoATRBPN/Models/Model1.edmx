@@ -11,7 +11,7 @@
           </Key>
           <Property Name="BERITA_ACARA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMOR_BERITA_ACARA" Type="varchar2" MaxLength="100" />
-          <Property Name="FILE" Type="blob" />
+          <Property Name="FILE_NAME" Type="varchar2" MaxLength="200" />
         </EntityType>
         <EntityType Name="BLANKO">
           <Key>
@@ -389,7 +389,7 @@
           </Key>
           <Property Name="BERITA_ACARA_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
           <Property Name="NOMOR_BERITA_ACARA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="FILE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FILE_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PENGELOLAAN_BLANKO" Relationship="Model.FK_BERITA_ACARA" FromRole="BERITA_ACARA" ToRole="PENGELOLAAN_BLANKO" />
         </EntityType>
         <EntityType Name="BLANKO">
@@ -704,7 +704,7 @@
           <EntitySetMapping Name="BERITA_ACARA">
             <EntityTypeMapping TypeName="Model.BERITA_ACARA">
               <MappingFragment StoreEntitySet="BERITA_ACARA">
-                <ScalarProperty Name="FILE" ColumnName="FILE" />
+                <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
                 <ScalarProperty Name="NOMOR_BERITA_ACARA" ColumnName="NOMOR_BERITA_ACARA" />
                 <ScalarProperty Name="BERITA_ACARA_ID" ColumnName="BERITA_ACARA_ID" />
               </MappingFragment>

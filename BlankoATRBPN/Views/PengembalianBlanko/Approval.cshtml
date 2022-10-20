@@ -1,18 +1,18 @@
-﻿@{ ViewBag.Title = "Pengembaian Blanko"; }
+﻿
+@{
+    ViewBag.Title = "Approval";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2 style="font-size:25px">Usulan Pengembalian Blanko</h2>
+                <h2 style="font-size:25px">Approval Pengembalian Blanko</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <div>
-                    <a href="@Url.Action("Create")" id="btn-add" class="btn btn-primary " style="float:right" type="submit"> Tambah Pengembalian Blanko</a>
-                    <br /><br />
-                </div>
                 <div class="col-sm-12">
                     <div class="card-box table-responsive">
                         <div class="body">
@@ -55,7 +55,7 @@
 </div>
 
 
-@Html.Hidden("item-to-delete", "", new { @id = "item-to-delete" })
+@Html.Hidden("item-to-approve", "", new { @id = "item-to-approve" })
 @section Scripts {
     <script>
         var table;
@@ -76,27 +76,46 @@
                     },
                     {
                         "data": "beritaAcaraFile", "autoWidth": true, "render": function (data) {
-                            return '<a href="#" id=' + data +' onclick="showPdf(this)"><i class="fa fa-file"></i></a>';
+                            return '<a href="#" id=' + data + ' onclick="showPdf(this)"><i class="fa fa-file"></i></a>';
                         }
                     },
                     { "data": "blanko", "autoWidth": true },
                     { "data": "tipe_blanko", "autoWidth": true },
                     {
                         "data": "PENGELOLAAN_BLANKO_ID", "autoWidth": true, "render": function (data) {
-                            return '<a class="btn btn-primary action" id=' + data + ' href="' + bashPath + 'PengembalianBlanko/Edit?id=' + data + '" ><i class="fa fa-edit"></i></a>';
+                            return '<a class="btn btn-primary action" id=' + data + ' onclick="showPopUp(this)"  ><i class="fa fa-check"></i></a>';
                         }
                     }
                 ]
             });
+        });
 
-            //table.on('order.dt search.dt', function () {
-            //    let i = 1;
+        $('#btnContinueApprove').click(function() {
+            var id = parseInt($('#item-to-approve').val());
+             $.ajax({
+                type: "POST",
+                url: '@Url.Action("ApprovePengembalian")',
+                data: JSON.stringify({ id: id }), //use id here
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (respons) {
+                     if (respons.message == "success") {
+                         table.ajax.reload();
+                         NotifSucces();
+                     }
+                     else {
+                         $('.bs-example-modal-sm').modal('hide');
+                         NotifFiled()
+                     }
+                },
+                 error: function () {
+                     NotifFiled();
+                 }
 
-            //    table.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
-            //        this.data(i++);
-            //    });
-            //}).draw();
-        })
+
+              });
+        });
+
     </script>
     <script>
         function showPdf(e) {
@@ -105,32 +124,14 @@
             $('.bs-example-modal-lg').modal('show');
         }
 
-    $('#btnContinueDelete').click(function() {
-        var id = parseInt($('#item-to-delete').val());
-         $.ajax({
-            type: "POST",
-            url: '@Url.Action("DeleteUkuran")',
-            data: JSON.stringify({ idUkuran: id }), //use id here
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-             success: function (respons) {
-                 if (respons.message == "succes") {
-                     table.ajax.reload();
-                     NotifSucces();
-                 }
-                 else {
-                     $('.bs-example-modal-sm').modal('hide');
-                     NotifFiled()
-                 }
-            },
-             error: function () {
-                 NotifFiled();
-             }
+        function showPopUp(e) {
+            var id = e.id;
+            $('#item-to-approve').val(id);
+            $('.bs-example-modal-sm').modal('show');
+        }
 
-
-            });
-    });
     </script>
+
 
 }
 
@@ -138,7 +139,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class='embed-responsive' style='padding-bottom:150%'>
-                <object id ="object-show-pdf" data="" type='application/pdf'></object>
+                <object id="object-show-pdf" data="" type='application/pdf'></object>
             </div>
 
         </div>
@@ -155,15 +156,15 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel2">Hapus Data </h4>
+                <h4 class="modal-title" id="myModalLabel2">Approve Data </h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Apakah anda yakin akan menghapus data ini?
+                    Apakah anda melakukan approval untuk data ini?
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger col-lg-3" id="btnContinueDelete" data-dismiss="modal"> Ya</button>
+                <button type="button" class="btn btn-danger col-lg-3" id="btnContinueApprove" data-dismiss="modal"> Ya</button>
                 <button type="button" class="btn btn-primary col-lg-3 fc-corner-left" data-dismiss="modal">Tidak</button>
             </div>
 

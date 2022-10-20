@@ -1,10 +1,11 @@
 ﻿@model BlankoATRBPN.Models.PENGELOLAAN_BLANKO
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
@@ -14,13 +15,13 @@
         <h4>Pengembalian Blanko</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.PENGELOLAAN_BLANKO_ID, "ID", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.PENGELOLAAN_BLANKO_ID, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.PENGELOLAAN_BLANKO_ID, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.PENGELOLAAN_BLANKO_ID, "ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PENGELOLAAN_BLANKO_ID, new { htmlAttributes = new { @readonly = "true", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PENGELOLAAN_BLANKO_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         @*<div class="form-group">
                 @Html.LabelFor(model => model.BERITA_ACARA_ID, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -86,7 +87,7 @@
                 @Html.DropDownListFor(model => model.BLANKOID,
                    new SelectList(ViewBag.Blanko, "BLANKOID", "SERI"),
                    "Pilih Blanko",
-                   new { @class = "form-control" })
+                   new { @class = "form-control", @disabled = "true" })
                 @Html.ValidationMessageFor(model => model.BLANKOID, "", new { @class = "text-danger" })
             </div>
         </div>
