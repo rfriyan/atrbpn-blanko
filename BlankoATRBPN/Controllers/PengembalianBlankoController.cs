@@ -28,18 +28,16 @@ namespace BlankoATRBPN.Controllers
 
         public ActionResult GetPengembalian()
         {
-            //var query1 = from pb1 in db.PENGELOLAAN_BLANKO.Where(x => x.TIPE_PROSES_BLANKO_ID == 4).GroupBy(x=>x.BLANKOID)
-            //             select new { }
+            var query =
+               from pb in db.PENGELOLAAN_BLANKO
+               join b in db.BLANKOes on pb.BLANKOID equals b.BLANKOID
+               join ba in db.BERITA_ACARA on pb.BERITA_ACARA_ID equals ba.BERITA_ACARA_ID
+               where pb.TIPE_PROSES_BLANKO_ID == 4 &&
+                    pb.PENGELOLAAN_BLANKO_ID == db.PENGELOLAAN_BLANKO.Where(x => x.PENGELOLAAN_BLANKO_ID == pb.PENGELOLAAN_BLANKO_ID).Max(x => x.PENGELOLAAN_BLANKO_ID) // pengembalian //
+               select new { pb.PENGELOLAAN_BLANKO_ID, tanggal = pb.TANGGAL_PEMBUATAN, blanko = b.SERI, tipe_blanko = b.TIPE, beritaAcaraFile = ba.FILE_NAME };
 
-            //var query2 =
-            //   from pb in db.PENGELOLAAN_BLANKO
-            //   join b in db.BLANKOes on pb.BLANKOID equals b.BLANKOID
-            //   join ba in db.BERITA_ACARA on pb.BERITA_ACARA_ID equals ba.BERITA_ACARA_ID
-            //   where pb.TIPE_PROSES_BLANKO_ID == 4  // pengembalian //
-            //   select new { pb.PENGELOLAAN_BLANKO_ID, tanggal = pb.TANGGAL_PEMBUATAN, blanko = b.SERI, tipe_blanko = b.TIPE, beritaAcaraFile = ba.FILE_NAME };
-
-            //var query = (db.Database.SqlQuery<List<PengembalianBlankoViewModel>>(@"SELECT 
-            //            pb1.PENGELOLAAN_BLANKO_ID as PENGELOLAAN_BLANKO_ID, 
+            //var getdata = (db.Database.SqlQuery<List<PengembalianBlankoViewModel>>(@"SELECT 
+            //            pb1.PENGELOLAAN_BLANKO_ID, 
             //            pb1.TANGGAL_PEMBUATAN AS tanggal,
             //            b.SERI as blanko,
             //            b.TIPE as tipe_blanko,
@@ -56,15 +54,6 @@ namespace BlankoATRBPN.Controllers
             //            pb1.TANGGAL_PEMBUATAN = (SELECT MAX(pb2.TANGGAL_PEMBUATAN) FROM ATRBPN.PENGELOLAAN_BLANKO pb2
             //                                      WHERE pb2.BLANKOID = pb1.BLANKOID AND pb2.TIPE_PROSES_BLANKO_ID = 4)")
             //  );
-
-            var query =
-               from pb in db.PENGELOLAAN_BLANKO
-               join b in db.BLANKOes on pb.BLANKOID equals b.BLANKOID
-               join ba in db.BERITA_ACARA on pb.BERITA_ACARA_ID equals ba.BERITA_ACARA_ID
-               where pb.TIPE_PROSES_BLANKO_ID == 4 &&
-                    pb.PENGELOLAAN_BLANKO_ID == db.PENGELOLAAN_BLANKO.Where(x => x.PENGELOLAAN_BLANKO_ID == pb.PENGELOLAAN_BLANKO_ID).Max(x => x.PENGELOLAAN_BLANKO_ID) // pengembalian //
-               select new { pb.PENGELOLAAN_BLANKO_ID, tanggal = pb.TANGGAL_PEMBUATAN, blanko = b.SERI, tipe_blanko = b.TIPE, beritaAcaraFile = ba.FILE_NAME };
-
 
 
             return Json(new { data = query }, JsonRequestBehavior.AllowGet);
