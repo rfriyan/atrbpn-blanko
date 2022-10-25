@@ -20,6 +20,7 @@
         <AssociationConnector Association="Model.FK_TIPE_BLANKO" />
         <AssociationConnector Association="Model.FK_TIPE_PROSES_BLANKO" />
         <AssociationConnector Association="Model.FK_USERPERORANGAN" />
+        <EntityTypeShape EntityType="Model.VPENGELOLAAN_BLANKO" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

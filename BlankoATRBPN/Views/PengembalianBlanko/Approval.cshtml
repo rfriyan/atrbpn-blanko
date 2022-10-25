@@ -25,16 +25,19 @@
                                                 ID
                                             </th>
                                             <th>
-                                                Tanggal
+                                                Tanggal Pengembalian
                                             </th>
                                             <th>
                                                 Berita Acara
                                             </th>
                                             <th>
-                                                Blanko
+                                                Seri Blanko
                                             </th>
                                             <th>
                                                 Tipe Blanko
+                                            </th>
+                                            <th>
+                                                Status
                                             </th>
                                             <th width="65px"></th>
 
@@ -70,17 +73,18 @@
                 columns: [
                     { "data": "PENGELOLAAN_BLANKO_ID", "autoWidth": true },
                     {
-                        "data": "tanggal", "autoWidth": true, "render": function (data) {
+                        "data": "TANGGAL", "autoWidth": true, "render": function (data) {
                             return convertToJavaScriptDate(data);
                         }
                     },
                     {
-                        "data": "beritaAcaraFile", "autoWidth": true, "render": function (data) {
+                        "data": "BERITAACARAFILE", "autoWidth": true, "render": function (data) {
                             return '<a href="#" id=' + data + ' onclick="showPdf(this)"><i class="fa fa-file"></i></a>';
                         }
                     },
-                    { "data": "blanko", "autoWidth": true },
-                    { "data": "tipe_blanko", "autoWidth": true },
+                    { "data": "BLANKO", "autoWidth": true },
+                    { "data": "TIPE_BLANKO", "autoWidth": true },
+                    { "data": "NAMA_STATUS", "autoWidth": true },
                     {
                         "data": "PENGELOLAAN_BLANKO_ID", "autoWidth": true, "render": function (data) {
                             return '<a class="btn btn-primary action" id=' + data + ' onclick="showPopUp(this)"  ><i class="fa fa-check"></i></a>';

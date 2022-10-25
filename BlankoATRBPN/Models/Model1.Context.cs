@@ -33,5 +33,6 @@ namespace BlankoATRBPN.Models
         public DbSet<TIPE_BLANKO> TIPE_BLANKO { get; set; }
         public DbSet<TIPE_PROSES_BLANKO> TIPE_PROSES_BLANKO { get; set; }
         public DbSet<USERPERORANGAN> USERPERORANGANs { get; set; }
+        public DbSet<VPENGELOLAAN_BLANKO> VPENGELOLAAN_BLANKO { get; set; }
     }
 }

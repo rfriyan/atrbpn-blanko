@@ -219,6 +219,19 @@
           <Property Name="TANGGALANOMALI" Type="date" />
           <Property Name="EMAILLOWER" Type="varchar2" MaxLength="100" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ATRBPN.VPENGELOLAAN_BLANKO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VPENGELOLAAN_BLANKO">
+          <Key>
+            <PropertyRef Name="PENGELOLAAN_BLANKO_ID" />
+          </Key>
+          <Property Name="PENGELOLAAN_BLANKO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TANGGAL" Type="date" />
+          <Property Name="BLANKO" Type="varchar2" MaxLength="20" />
+          <Property Name="TIPE_BLANKO" Type="varchar2" MaxLength="255" />
+          <Property Name="BERITAACARAFILE" Type="varchar2" MaxLength="200" />
+          <Property Name="NAMA_STATUS" Type="varchar2" MaxLength="100" />
+        </EntityType>
         <Association Name="FK_BERITA_ACARA">
           <End Role="BERITA_ACARA" Type="Self.BERITA_ACARA" Multiplicity="0..1" />
           <End Role="PENGELOLAAN_BLANKO" Type="Self.PENGELOLAAN_BLANKO" Multiplicity="*" />
@@ -312,6 +325,16 @@
           <EntitySet Name="TIPE_BLANKO" EntityType="Self.TIPE_BLANKO" Schema="ATRBPN" store:Type="Tables" />
           <EntitySet Name="TIPE_PROSES_BLANKO" EntityType="Self.TIPE_PROSES_BLANKO" Schema="ATRBPN" store:Type="Tables" />
           <EntitySet Name="USERPERORANGAN" EntityType="Self.USERPERORANGAN" Schema="ATRBPN" store:Type="Tables" />
+          <EntitySet Name="VPENGELOLAAN_BLANKO" EntityType="Self.VPENGELOLAAN_BLANKO" store:Type="Views" store:Schema="ATRBPN">
+            <DefiningQuery>SELECT 
+"VPENGELOLAAN_BLANKO"."PENGELOLAAN_BLANKO_ID" AS "PENGELOLAAN_BLANKO_ID", 
+"VPENGELOLAAN_BLANKO"."TANGGAL" AS "TANGGAL", 
+"VPENGELOLAAN_BLANKO"."BLANKO" AS "BLANKO", 
+"VPENGELOLAAN_BLANKO"."TIPE_BLANKO" AS "TIPE_BLANKO", 
+"VPENGELOLAAN_BLANKO"."BERITAACARAFILE" AS "BERITAACARAFILE", 
+"VPENGELOLAAN_BLANKO"."NAMA_STATUS" AS "NAMA_STATUS"
+FROM "ATRBPN"."VPENGELOLAAN_BLANKO" "VPENGELOLAAN_BLANKO"</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_BERITA_ACARA" Association="Self.FK_BERITA_ACARA">
             <End Role="BERITA_ACARA" EntitySet="BERITA_ACARA" />
             <End Role="PENGELOLAAN_BLANKO" EntitySet="PENGELOLAAN_BLANKO" />
@@ -382,6 +405,7 @@
             <End Role="USERPERORANGAN" EntitySet="USERPERORANGANs" />
             <End Role="PENGELOLAAN_BLANKO" EntitySet="PENGELOLAAN_BLANKO" />
           </AssociationSet>
+          <EntitySet Name="VPENGELOLAAN_BLANKO" EntityType="Model.VPENGELOLAAN_BLANKO" />
         </EntityContainer>
         <EntityType Name="BERITA_ACARA">
           <Key>
@@ -695,6 +719,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="VPENGELOLAAN_BLANKO">
+          <Key>
+            <PropertyRef Name="PENGELOLAAN_BLANKO_ID" />
+          </Key>
+          <Property Name="PENGELOLAAN_BLANKO_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="TANGGAL" Type="DateTime" />
+          <Property Name="BLANKO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TIPE_BLANKO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BERITAACARAFILE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NAMA_STATUS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -920,6 +955,18 @@
                 <ScalarProperty Name="NAMA" ColumnName="NAMA" />
                 <ScalarProperty Name="TANGGALDAFTAR" ColumnName="TANGGALDAFTAR" />
                 <ScalarProperty Name="USERPERORANGANID" ColumnName="USERPERORANGANID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VPENGELOLAAN_BLANKO">
+            <EntityTypeMapping TypeName="Model.VPENGELOLAAN_BLANKO">
+              <MappingFragment StoreEntitySet="VPENGELOLAAN_BLANKO">
+                <ScalarProperty Name="NAMA_STATUS" ColumnName="NAMA_STATUS" />
+                <ScalarProperty Name="BERITAACARAFILE" ColumnName="BERITAACARAFILE" />
+                <ScalarProperty Name="TIPE_BLANKO" ColumnName="TIPE_BLANKO" />
+                <ScalarProperty Name="BLANKO" ColumnName="BLANKO" />
+                <ScalarProperty Name="TANGGAL" ColumnName="TANGGAL" />
+                <ScalarProperty Name="PENGELOLAAN_BLANKO_ID" ColumnName="PENGELOLAAN_BLANKO_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

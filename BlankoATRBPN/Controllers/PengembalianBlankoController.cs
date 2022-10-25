@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using BlankoATRBPN.Models;
 using BlankoATRBPN.ViewModel;
+using BlankoATRBPN.Helper;
 
 namespace BlankoATRBPN.Controllers
 {
@@ -28,35 +30,10 @@ namespace BlankoATRBPN.Controllers
 
         public ActionResult GetPengembalian()
         {
-            var query =
-               from pb in db.PENGELOLAAN_BLANKO
-               join b in db.BLANKOes on pb.BLANKOID equals b.BLANKOID
-               join ba in db.BERITA_ACARA on pb.BERITA_ACARA_ID equals ba.BERITA_ACARA_ID
-               where pb.TIPE_PROSES_BLANKO_ID == 4 &&
-                    pb.PENGELOLAAN_BLANKO_ID == db.PENGELOLAAN_BLANKO.Where(x => x.PENGELOLAAN_BLANKO_ID == pb.PENGELOLAAN_BLANKO_ID).Max(x => x.PENGELOLAAN_BLANKO_ID) // pengembalian //
-               select new { pb.PENGELOLAAN_BLANKO_ID, tanggal = pb.TANGGAL_PEMBUATAN, blanko = b.SERI, tipe_blanko = b.TIPE, beritaAcaraFile = ba.FILE_NAME };
 
-            //var getdata = (db.Database.SqlQuery<List<PengembalianBlankoViewModel>>(@"SELECT 
-            //            pb1.PENGELOLAAN_BLANKO_ID, 
-            //            pb1.TANGGAL_PEMBUATAN AS tanggal,
-            //            b.SERI as blanko,
-            //            b.TIPE as tipe_blanko,
-            //            ba.FILE_NAME as beritaAcaraFile
-            //        FROM 
-            //            ATRBPN.PENGELOLAAN_BLANKO pb1 LEFT JOIN 
-            //            BERITA_ACARA ba ON pb1.BERITA_ACARA_ID = ba.BERITA_ACARA_ID LEFT JOIN 
-            //            TIPE_BLANKO tb ON pb1.TIPE_BLANKO_ID = tb.TIPE_BLANKO_ID LEFT JOIN
-            //            TIPE_PROSES_BLANKO tpb ON pb1.TIPE_PROSES_BLANKO_ID  = tpb.TIPE_PROSES_BLANKO_ID LEFT JOIN 
-            //            STATUS_PENGELOLAAN_BLANKO spb ON pb1.STATUS_PENGELOLAAN_BLANKO_ID = spb.STATUS_PENGELOLAAN_BLANKO_ID LEFT JOIN 
-            //            BLANKO b ON pb1.BLANKOID = b.BLANKOID LEFT JOIN 
-            //            USERPERORANGAN u ON pb1.USERPERORANGANID = u.USERPERORANGANID 
-            //        WHERE 
-            //            pb1.TANGGAL_PEMBUATAN = (SELECT MAX(pb2.TANGGAL_PEMBUATAN) FROM ATRBPN.PENGELOLAAN_BLANKO pb2
-            //                                      WHERE pb2.BLANKOID = pb1.BLANKOID AND pb2.TIPE_PROSES_BLANKO_ID = 4)")
-            //  );
+            var data = db.VPENGELOLAAN_BLANKO.ToList();
 
-
-            return Json(new { data = query }, JsonRequestBehavior.AllowGet);
+            return Json(new { data = data }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: PengembalianBlanko/Details/5
@@ -84,10 +61,9 @@ namespace BlankoATRBPN.Controllers
                 var blankoType = db.TIPE_BLANKO.Where(x => x.TIPE_BLANKO_CODE == blanko.TIPE).FirstOrDefault();
                 var id = db.PENGELOLAAN_BLANKO.Max(x => x.PENGELOLAAN_BLANKO_ID);
                 obj.PENGELOLAAN_BLANKO_ID = id + 1;
-                //obj.BERITA_ACARA_ID
                 obj.TIPE_BLANKO_ID = blankoType.TIPE_BLANKO_ID;
                 obj.TIPE_PROSES_BLANKO_ID = 4;
-                obj.STATUS_PENGELOLAAN_BLANKO_ID = 1;
+                obj.STATUS_PENGELOLAAN_BLANKO_ID = 5;
                 obj.TANGGAL_PEMBUATAN = DateTime.Now;
 
                 db.PENGELOLAAN_BLANKO.Add(obj);
@@ -107,7 +83,7 @@ namespace BlankoATRBPN.Controllers
         public ActionResult Edit(int? id)
         {
 
-            
+
             ViewBag.Blanko = db.BLANKOes.ToList();
             ViewBag.BeritaAcaraList = db.BERITA_ACARA.ToList();
             if (id == null)
@@ -119,7 +95,7 @@ namespace BlankoATRBPN.Controllers
                 var pengolelolaan = db.PENGELOLAAN_BLANKO.Find(id);
                 return View(pengolelolaan);
             }
-            
+
         }
 
         // POST: PengembalianBlanko/Edit/5
@@ -181,15 +157,10 @@ namespace BlankoATRBPN.Controllers
         {
             try
             {
-                
-                //var blanko = db.BLANKOes.Find(obj.BLANKOID);
-                //var blankoType = db.TIPE_BLANKO.Where(x => x.TIPE_BLANKO_CODE == blanko.TIPE).FirstOrDefault();
                 var newIdTerima = db.PENGELOLAAN_BLANKO.Max(x => x.PENGELOLAAN_BLANKO_ID) + 1;
 
                 PENGELOLAAN_BLANKO newKelola = new PENGELOLAAN_BLANKO();
                 var oldKelola = db.PENGELOLAAN_BLANKO.Find(id);
-
-                //obj.PENGELOLAAN_BLANKO_ID = id + 1;
 
                 newKelola.PENGELOLAAN_BLANKO_ID = newIdTerima;
                 newKelola.BERITA_ACARA_ID = oldKelola.BERITA_ACARA_ID;
@@ -206,10 +177,7 @@ namespace BlankoATRBPN.Controllers
                 var newIdKembali = db.PENGELOLAAN_BLANKO.Max(x => x.PENGELOLAAN_BLANKO_ID) + 1;
 
                 PENGELOLAAN_BLANKO newKelola2 = new PENGELOLAAN_BLANKO();
-                //var oldKelola = db.PENGELOLAAN_BLANKO.Find(id);
-
-                //obj.PENGELOLAAN_BLANKO_ID = id + 1;
-
+                
                 newKelola2.PENGELOLAAN_BLANKO_ID = newIdKembali;
                 newKelola2.BERITA_ACARA_ID = oldKelola.BERITA_ACARA_ID;
                 newKelola2.TIPE_BLANKO_ID = oldKelola.TIPE_BLANKO_ID;
@@ -221,21 +189,21 @@ namespace BlankoATRBPN.Controllers
                 db.PENGELOLAAN_BLANKO.Add(newKelola2);
                 db.SaveChanges();
 
-                var blanko = db.BLANKOes.Find(oldKelola.BLANKOID);
-                //var newIdBlanko = db.BLANKOes.Max(x => x.BLANKOID) + 1;
+                var blanko = (BLANKO)db.BLANKOes.AsNoTracking().Where(x=>x.BLANKOID == oldKelola.BLANKOID).FirstOrDefault();
                 var newVersi = db.BLANKOes.Where(x => x.BLANKOID == oldKelola.BLANKOID).Max(x => x.VERSI);
                 var newBlanko = mapper.Map<BLANKO>(blanko);
-                newBlanko.BLANKOID = Guid.NewGuid().ToString();
-                newBlanko.VERSI = newVersi;
+                newBlanko.BLANKOID = Utils.DotNetToOracle(Guid.NewGuid().ToString());
+                newBlanko.VERSI = newVersi + 1;
                 newBlanko.STATUS = "R";
                 newBlanko.TANGGALPERUBAHAN = DateTime.Now;
                 newBlanko.POSITION = 2;
-
-
+                
+                db.BLANKOes.Add(newBlanko);
+                db.SaveChanges();
 
                 return Json(new { message = "success" });
             }
-            catch (Exception x)
+            catch (DbEntityValidationException e)
             {
                 return Json(new { message = "failed" });
             }
